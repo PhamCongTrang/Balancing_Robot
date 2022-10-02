@@ -12,7 +12,7 @@
 #define IN4 9
 #define ENB 11
 
-#define min_speed 250
+#define min_speed 50
 #define max_speed 255
 
 double motorSpeedFactorLeft = 1;
