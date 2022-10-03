@@ -32,7 +32,7 @@ void setup()
 }
 unsigned int pret=0; // robot chay duoc 65s
 int Kp= 16, Ki=10, Kd =0;
-float P, I, D;
+float P, I=0, D;
 void loop()
 {
     preAngleX = angleX;
