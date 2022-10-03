@@ -40,8 +40,8 @@ void loop()
     mpu6050.update();
     float angleX = mpu6050.getAngleX();
 
-    dt = milis() - pret;
-    pret = milis();
+    dt = millis() - pret;
+    pret = millis();
 
     if (abs(angleX) < 3) 
     {
