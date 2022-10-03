@@ -73,6 +73,14 @@ void loop()
     {
         Kp= 16; // Doan m thay doi dong nay
         speed=angleX*Kp;
+        if (speed>0)
+        {
+            speed = constrain(speed, min_speed, max_speed);
+        }
+        else 
+        {
+            speed = constrain(speed, -max_speed, -min_speed);
+        }
         speed = constrain(speed, min_speed, max_speed);
         motorController.move(speed);
     }
