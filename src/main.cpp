@@ -33,12 +33,13 @@ void setup()
 unsigned int pret=0; // robot chay duoc 65s
 int Kp= 16, Ki=10, Kd =0;
 float P, I=0, D;
+float angleX, preAngleX, speed;
 void loop()
 {
     preAngleX = angleX;
 
     mpu6050.update();
-    float angleX = mpu6050.getAngleX();
+    angleX = mpu6050.getAngleX();
 
     dt = millis() - pret;
     pret = millis();
