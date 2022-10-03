@@ -71,8 +71,9 @@ void loop()
     }
     else
     {
-        Kp= 10; // Doan m thay doi dong nay
+        Kp= 16; // Doan m thay doi dong nay
         speed=angleX*Kp;
         speed = constrain(speed, min_speed, max_speed);
+        motorController.move(speed);
     }
 }

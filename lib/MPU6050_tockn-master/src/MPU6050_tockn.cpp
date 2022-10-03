@@ -130,7 +130,7 @@ void MPU6050::update(){
   angleGyroY += gyroY * interval;
   angleGyroZ += gyroZ * interval;
 
-  angleX = (gyroCoef * (angleX + gyroX * interval)) + (accCoef * angleAccX);
+  angleX = (gyroCoef * (angleX + gyroX * interval)) + (accCoef * angleAccX); // su dung ket qua nay
   angleY = (gyroCoef * (angleY + gyroY * interval)) + (accCoef * angleAccY);
   angleZ = angleGyroZ;
 
