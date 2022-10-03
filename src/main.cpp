@@ -71,8 +71,9 @@ void loop()
     }
     else
     {
-        Kp= 16; // Doan m thay doi dong nay
-        speed=angleX*Kp;
+
+        int Kp= 16; // Doan m thay doi dong nay
+        float speed=angleX*Kp;
         if (speed>0)
         {
             speed = constrain(speed, min_speed, max_speed);
