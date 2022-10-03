@@ -12,7 +12,7 @@
 #define IN4 9
 #define ENB 11
 
-#define min_speed 50
+#define min_speed 20
 #define max_speed 255
 
 double motorSpeedFactorLeft = 1;
@@ -30,9 +30,9 @@ void setup()
     // mpu6050.calcGyroOffsets(true);
     mpu6050.setGyroOffsets(-2.45, 0.98, 1.06);
 }
-unsigned int pret=0; // robot chay duoc 65s
-int Kp= 16, Ki=10, Kd =0;
-float P, I=0, D;
+unsigned int pret = 0; // robot chay duoc 65s
+int Kp = 15, Ki = 0.5, Kd = 10;
+float P, I = 0, D;
 float angleX, preAngleX, speed;
 void loop()
 {
@@ -41,28 +41,28 @@ void loop()
     mpu6050.update();
     angleX = mpu6050.getAngleX();
 
-    dt = millis() - pret;
+    int dt = millis() - pret;
     pret = millis();
 
-    if (abs(angleX) < 3) 
+    if ((abs(angleX) < 3) || (abs(angleX) > 75))
     {
         motorController.stopMoving();
     }
     else
     {
-        
-        P = Kp*angleX;
-        I += Ki*angleX*dt;
-        D = Kd*(angleX - preAngleX)/dt;
+
+        P = Kp * angleX;
+        I += Ki * angleX * dt;
+        D = Kd * (angleX - preAngleX) / dt;
         speed = P + I + D;
-        if (speed>0)
+        if (speed > 0)
         {
             speed = constrain(speed, min_speed, max_speed);
         }
-        else 
+        else
         {
             speed = constrain(speed, -max_speed, -min_speed);
         }
-        motorController.move(speed);
+        motorController.move(-speed);
     }
 }
