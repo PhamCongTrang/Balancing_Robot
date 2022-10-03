@@ -36,27 +36,12 @@ void setup()
 void loop()
 {
     mpu6050.update();
-    float AccY = mpu6050.getAccY();
+    float angleX = mpu6050.getAngleX();
 
-    Serial.print("accY : ");
-    Serial.println(AccY);
+    Serial.print("angleX : ");
+    Serial.println(angleX);
 
-    // if (abs(AccY) > 0.8)
-    // {
-    //     motorController.stopMoving();
-    // } else if  (AccY < -0.1)
-    // {
-    //     motorController.FullspeedBackward();
-    // }
-    // else if (AccY > 0.1)
-    // {
-    //     motorController.FullspeedForward();
-    // }
-    // else
-    // {
-    //     motorController.stopMoving();
-    // }
-
+    /* 
     int direction = 255;
     int speed = (-direction) * AccY;
     if (speed < 0)
@@ -79,9 +64,15 @@ void loop()
     else
     {
         motorController.stopMoving();
+    } */
+    if (abs(angleX) < 3) 
+    {
+        motorController.stopMoving();
     }
-
-    // if(millis() - timer > 1000) {
-    //     timer = millis();
-    // }
+    else
+    {
+        Kp= 10; // Doan m thay doi dong nay
+        speed=angleX*Kp;
+        speed = constrain(speed, min_speed, max_speed);
+    }
 }
