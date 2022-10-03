@@ -40,31 +40,7 @@ void loop()
 
     Serial.print("angleX : ");
     Serial.println(angleX);
-
-    /* 
-    int direction = 255;
-    int speed = (-direction) * AccY;
-    if (speed < 0)
-        speed = constrain(speed, -max_speed, -min_speed);
-    else
-        speed = constrain(speed, min_speed, max_speed);
-
-    if (abs(AccY) > 0.8)
-    {
-        motorController.stopMoving();
-    }
-    else if (AccY < -0.1)
-    {
-        motorController.move(speed);
-    }
-    else if (AccY > 0.1)
-    {
-        motorController.move(speed);
-    }
-    else
-    {
-        motorController.stopMoving();
-    } */
+    //Code P
     if (abs(angleX) < 3) 
     {
         motorController.stopMoving();
