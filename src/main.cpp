@@ -81,7 +81,6 @@ void loop()
         {
             speed = constrain(speed, -max_speed, -min_speed);
         }
-        speed = constrain(speed, min_speed, max_speed);
         motorController.move(speed);
     }
 }
