@@ -22,8 +22,6 @@ LMotorController motorController(ENA, IN1, IN2, ENB, IN3, IN4, motorSpeedFactorL
 
 MPU6050 mpu6050(Wire);
 
-long timer = 0;
-
 void setup()
 {
     Serial.begin(9600);
@@ -32,24 +30,30 @@ void setup()
     // mpu6050.calcGyroOffsets(true);
     mpu6050.setGyroOffsets(-2.45, 0.98, 1.06);
 }
-
+int pret=0;
+int Kp= 16, Ki=10, Kd =0;
+float P, I, D;
 void loop()
 {
+    preAngleX = angleX;
+
     mpu6050.update();
     float angleX = mpu6050.getAngleX();
 
-    Serial.print("angleX : ");
-    Serial.println(angleX);
-    //Code P
+    dt = micros() - pret;
+    pret = micros();
+
     if (abs(angleX) < 3) 
     {
         motorController.stopMoving();
     }
     else
     {
-
-        int Kp= 16; // Doan m thay doi dong nay
-        float speed=angleX*Kp;
+        
+        P = Kp*angleX;
+        I += Ki*angleX*dt;
+        D = Kd*(angleX - preAngleX)/dt;
+        speed = P + I + D;
         if (speed>0)
         {
             speed = constrain(speed, min_speed, max_speed);
