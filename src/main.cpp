@@ -30,8 +30,8 @@ void setup()
     // mpu6050.calcGyroOffsets(true);
     mpu6050.setGyroOffsets(-2.45, 0.98, 1.06);
 }
-unsigned int pret = 0; // robot chay duoc 65s
-int Kp = 15, Ki = 0.5, Kd = 10;
+unsigned long pret = 0;
+int Kp = 1, Ki = 1, Kd = 1;
 float P, I = 0, D;
 float angleX, preAngleX, speed;
 void loop()
