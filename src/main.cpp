@@ -33,7 +33,7 @@ void setup()
 unsigned long pret = 0;
 int Kp = 1, Ki = 1, Kd = 1;
 float P, I = 0, D;
-float angleX, preAngleX, speed;
+float angleX=0, preAngleX, speed;
 void loop()
 {
     preAngleX = angleX;
