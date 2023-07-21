@@ -18,12 +18,6 @@ Before running the code on your Arduino board, make sure you have the following 
 4. Two DC motors with encoders
 5. Wheels and chassis for the robot
 
-## Circuit Diagram
-
-![Circuit Diagram](/path/to/circuit_diagram.png)
-
-[Include a circuit diagram here, showing how the Arduino, MPU6050, motor driver, and motors are connected.]
-
 ## Installation and Setup
 
 1. Clone this repository to your local machine or download the ZIP file and extract it.
@@ -49,7 +43,3 @@ The robot uses the MPU6050 sensor to measure its tilt angle along the X-axis. Ba
 ## Contributing
 
 Contributions to this project are welcome. If you find any bugs or have suggestions for improvement, please feel free to open an issue or submit a pull request.
-
-## License
-
-[Include the license information for the project here. For example, if the code is under an open-source license like MIT or Apache 2.0, mention that here with a link to the license file.]
